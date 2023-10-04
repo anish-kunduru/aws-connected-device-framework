@@ -80,7 +80,7 @@ function buildSearchRequest(data: DataTable): SearchRequestModel {
 
                     const filter: SearchRequestFilter = {
                         field: attrs[attrs.length - 2],
-                        value: attrs[attrs.length - 1],
+                        value: decodeURIComponent(attrs[attrs.length - 1]),
                     };
                     // do we have traversals defined?
                     if (attrs.length > 2) {

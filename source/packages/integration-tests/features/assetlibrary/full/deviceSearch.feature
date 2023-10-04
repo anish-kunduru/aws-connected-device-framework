@@ -146,7 +146,7 @@ Feature: Device search
     When I search with following attributes:
       | type         | device                |
       | ancestorPath | /deviceSearch_feature |
-      | regex        | pair:(?i)WHITE        |
+      | regex        | pair:%28%3Fi%29WHITE        |
     Then search result contains 3 results
     And search result contains device "test-devicesearch-001b"
     And search result contains device "test-devicesearch-002a"
