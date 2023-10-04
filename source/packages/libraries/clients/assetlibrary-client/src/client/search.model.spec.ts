@@ -125,6 +125,7 @@ describe('SearchRequestModel', () => {
             'startsWith',
             'endsWith',
             'contains',
+            'regex',
             'exist',
             'nexist',
         ];

@@ -48,6 +48,7 @@ export class SearchRequestModel {
     startsWith?: SearchRequestFilters;
     endsWith?: SearchRequestFilters;
     contains?: SearchRequestFilters;
+    regex?: SearchRequestFilters;
 
     exist?: SearchRequestFilters;
     nexist?: SearchRequestFilters;
@@ -69,6 +70,7 @@ export class SearchRequestModel {
         this.lte = other.lte;
         this.gt = other.gt;
         this.gte = other.gte;
+        this.regex = other.regex;
         this.startsWith = other.startsWith;
         this.endsWith = other.endsWith;
         this.contains = other.contains;
@@ -169,6 +171,10 @@ export class SearchRequestModel {
             qs = qs.concat(this.buildQSValues('endsWith', this.endsWith, true));
         }
 
+        if (this.regex){
+            qs = qs.concat(this.buildQSValues('regex', this.regex, true));
+        }
+
         if (this.contains) {
             qs = qs.concat(this.buildQSValues('contains', this.contains, true));
         }
@@ -257,6 +263,11 @@ export class SearchRequestModel {
         if (this.endsWith) {
             const values = this.buildQSValues('endsWith', this.endsWith);
             qs['endsWith'] = values.map((v) => v.split('=')[1]);
+        }
+
+        if (this.regex) {
+            const values = this.buildQSValues('regex', this.regex);
+            qs['regex'] = values.map((v) => v.split('=')[1]);
         }
 
         if (this.contains) {
