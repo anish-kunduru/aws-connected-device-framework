@@ -1524,6 +1524,33 @@ paths:
             type: array
             items:
               type: string
+        - name: regex
+          in: query
+          description: >
+            Filter by an attribute based on a Java regex pattern.
+            See also: https://https://tinkerpop.apache.org/docs/current/upgrade/#_textp_regex
+
+            For example: `?regex=serialNo:XY[A-Z]\-[0-4][^9].*`.
+
+            Regex filters are performed against the original complete value of the field, not individual 
+            words. For example, a device with attribute "mfg" set to "Widgets Incorporated" can be found with 
+            the query `regex=mfg:[wW]idgets Inc.*` but not with the query `regex=mfg:[wW]idgets`. 
+
+            Regex filters are case sensitive, but a case insensitive search may be performed via '(?i)'.
+            Do not include slash delimiters at the beginning or 
+            end of your regular expression, i.e. use `regex=abc[0-9]`, not `regex=/abc[0-9]/`.
+            Correct URL-encoding is especially important with the regex parameter because regular expressions 
+            can contain many special characters. Note that the aforementioned examples are shown before 
+            URL-encoding for readability but may not work unless correctly URL-encoded. Examples of regex 
+            parameter values before and after URL-encoding:
+            * `regex=mfg:[wW]idgets Inc.*` --> `regex=mfg%3A%255BwW%255Didgets%2520Inc.*`
+            * `regex=mpn:ABC\[[0-9]\]` --> `regex=mpn:ABC%255C%255B%255B0-9%255D%255C%255D`
+            * `regex=desc:back\\slash` (literal backslash) --> `regex=desc%3Aback%255C%255Cslash`
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
         - name: nexist
           in: query
           description:
