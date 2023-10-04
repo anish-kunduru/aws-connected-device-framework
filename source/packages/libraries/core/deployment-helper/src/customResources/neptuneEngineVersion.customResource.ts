@@ -19,7 +19,7 @@ import { CustomResource } from './customResource';
 import { CustomResourceEvent } from './customResource.model';
 
 // min supported versions
-const minSupportedVersion = '1.2.0.0.R2';
+const minSupportedVersion = '1.2.1.0.R2';
 
 @injectable()
 export class NeptuneEngineVersionCustomResource implements CustomResource {
