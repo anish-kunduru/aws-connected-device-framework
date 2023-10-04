@@ -48,6 +48,7 @@ export class SearchAssembler {
         startsWiths: string | string[],
         endsWiths: string | string[],
         containses: string | string[],
+        regexes: string | string[],
         exists: string | string[],
         nexists: string | string[],
         facetField?: string,
@@ -82,6 +83,7 @@ export class SearchAssembler {
         req.startsWith = this.toSearchRequestFilters(startsWiths);
         req.endsWith = this.toSearchRequestFilters(endsWiths);
         req.contains = this.toSearchRequestFilters(containses);
+        req.regex = this.toSearchRequestFilters(regexes);
 
         req.exists = this.toSearchRequestFilters(exists);
         req.nexists = this.toSearchRequestFilters(nexists);

@@ -144,6 +144,13 @@ export class SearchDaoFull extends BaseDaoFull {
                 traverser.has(f.field, process.TextP.containing(f.value));
             });
         }
+        if (request.regex !== undefined) {
+            request.regex.forEach((f) => {
+                traverser.select('a');
+                this.buildSearchFilterVBase(f, traverser);
+                traverser.has(f.field, process.TextP.regex(f.value));
+            });
+        }
 
         if (request.exists !== undefined) {
             request.exists.forEach((f) => {

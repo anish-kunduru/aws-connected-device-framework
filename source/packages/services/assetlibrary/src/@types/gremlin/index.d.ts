@@ -284,6 +284,7 @@ declare module 'gremlin' {
             and(arg?: any): P;
             or(arg?: any): P;
             static containing(...args: any[]): TextP;
+            static regex(...args: any[]): TextP;
             static endingWith(...args: any[]): TextP;
             static notContaining(...args: any[]): TextP;
             static notEndingWith(...args: any[]): TextP;

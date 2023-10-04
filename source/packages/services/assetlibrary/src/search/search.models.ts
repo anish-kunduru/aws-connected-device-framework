@@ -48,6 +48,7 @@ export class SearchRequestModel {
     startsWith?: SearchRequestFilters;
     endsWith?: SearchRequestFilters;
     contains?: SearchRequestFilters;
+    regex?: SearchRequestFilters;
 
     exists?: SearchRequestFilters;
     nexists?: SearchRequestFilters;

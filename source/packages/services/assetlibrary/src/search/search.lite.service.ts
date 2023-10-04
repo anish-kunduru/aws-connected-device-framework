@@ -61,7 +61,8 @@ export class SearchServiceLite {
             model.gte !== undefined ||
             model.startsWith !== undefined ||
             model.endsWith !== undefined ||
-            model.contains !== undefined;
+            model.contains !== undefined ||
+            model.regex !== undefined;
         ow(someFiltersDefined, ow.boolean.true);
 
         // default pagination
