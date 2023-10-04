@@ -140,6 +140,18 @@ Feature: Device search
     And search result contains device "test-devicesearch-002a"
     And search result contains device "test-devicesearch-002b"
 
+  Scenario: Custom string attribute regex
+    Given my authorization is
+      | / | * |
+    When I search with following attributes:
+      | type         | device                |
+      | ancestorPath | /deviceSearch_feature |
+      | regex        | pair:(?i)WHITE        |
+    Then search result contains 3 results
+    And search result contains device "test-devicesearch-001b"
+    And search result contains device "test-devicesearch-002a"
+    And search result contains device "test-devicesearch-002b"
+
   Scenario: Custom number attribute less than
     Given my authorization is
       | / | * |
